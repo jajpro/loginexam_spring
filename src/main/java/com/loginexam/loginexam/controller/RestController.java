@@ -12,8 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @org.springframework.web.bind.annotation.RestController
 @RequiredArgsConstructor
+@Slf4j
 public class RestController {
 
     private final MemberService memberService;
@@ -31,6 +34,13 @@ public class RestController {
         memberService.join(member);
 
         return new ResponseEntity(DefaultResponse.res(StatusCode.OK, ResponseMessage.LOGIN_SUCCESS, form), HttpStatus.OK);
+    }
+
+    @PostMapping("/members/signIn")
+    public ResponseEntity signIn(MemberForm form) {
+
+            return new ResponseEntity(memberService.signIn(form), HttpStatus.OK);
+
     }
 
 

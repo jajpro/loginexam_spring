@@ -21,14 +21,10 @@ public class MemberController {
         return "members/createMemberForm";
     }
 
- /*   @PostMapping("/members/new")
-    public String create(MemberForm form) {
-        Member member = new Member();
-        member.setName(form.getName());
-        member.setPassword(form.getPassword());
-        memberService.join(member);
-        return "redirect:/";
-    }*/
+    @GetMapping("/members/signIn")
+    public String signInForm() {
+        return "members/signInForm";
+    }
 
     @GetMapping("/members")
     public String list(Model model) {
